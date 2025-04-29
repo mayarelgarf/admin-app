@@ -1,0 +1,50 @@
+{
+  "notifications": [
+    {
+      "id": 1,
+      "icon": "notifications",
+      "message": "You have a new message from your instructor.",
+      "metadata": "New Message",
+      "link": "/messages/123",
+      "color": "#4caf50",
+      "createdAt": "2025-04-28T10:45:00.000Z",
+      "updatedAt": "2025-04-28T11:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "icon": "event",
+      "message": "Your course 'Angular Basics' starts tomorrow.",
+      "metadata": "Course Reminder",
+      "link": "/courses/angular-basics",
+      "color": "#2196f3",
+      "createdAt": "2025-04-27T08:15:00.000Z"
+    },
+    {
+      "id": 3,
+      "icon": "warning",
+      "message": "Scheduled maintenance on May 1st, 2 AM - 4 AM.",
+      "metadata": "System Alert",
+      "color": "#ff9800",
+      "createdAt": "2025-04-26T16:30:00.000Z"
+    },
+    {
+      "id": 4,
+      "icon": "check_circle",
+      "message": "You completed the 'JavaScript Advanced' course.",
+      "metadata": "Course Completed",
+      "link": "/certificates/js-advanced",
+      "color": "#009688",
+      "createdAt": "2025-04-25T14:00:00.000Z",
+      "updatedAt": "2025-04-25T14:30:00.000Z"
+    },
+    {
+      "id": 5,
+      "icon": "campaign",
+      "message": "New event: Tech Talk with Angular Team",
+      "metadata": "Event",
+      "link": "/events/angular-talk",
+      "color": "#673ab7",
+      "createdAt": "2025-04-24T09:45:00.000Z"
+    }
+  ]
+}
