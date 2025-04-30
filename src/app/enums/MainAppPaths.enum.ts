@@ -1,3 +1,4 @@
-export enum MainAppPaths{
-NOTIFICATION_LIST  ="notification-list"
+export enum MainAppPaths {
+  HOME = 'home',
+  NOTIFICATION = 'notification',
 }

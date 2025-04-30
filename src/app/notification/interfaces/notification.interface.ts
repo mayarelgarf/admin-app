@@ -8,3 +8,11 @@ export interface Notification {
   createdAt: string;
   updatedAt?: string;
 }
+
+export interface CreateNotificationRequest{
+  icon: string;
+  message: string;
+  metadata: string;
+  createdAt: string;
+
+}

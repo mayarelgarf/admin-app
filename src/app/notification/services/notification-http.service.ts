@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Notification } from '../interfaces/notification.interface';
+import { CreateNotificationRequest, Notification } from '../interfaces/notification.interface';
 const NOTIFICATIONS_API_URL = 'http://localhost:3000/notifications';
 @Injectable({
   providedIn: 'root',
@@ -14,19 +14,19 @@ export class NotificationHttpService {
   getNotificationById(id: number): Observable<Notification> {
     return this._http.get<Notification>(`NOTIFICATIONS_API_URL/${id}`);
   }
-  addNotification(notification: Notification): Observable<any> {
+  addNotification(notification: CreateNotificationRequest): Observable<any> {
     return this._http.post<any>(
-      `NOTIFICATIONS_API_URL/${notification.id}`,
+      `${NOTIFICATIONS_API_URL}`,
       notification
     );
   }
   updateNotification(notification: Notification): Observable<any> {
     return this._http.patch<any>(
-      `NOTIFICATIONS_API_URL/${notification.id}`,
+      `${NOTIFICATIONS_API_URL}/${notification.id}`,
       notification
     );
   }
-  deleteNotification(id:number): Observable<any> {
-    return this._http.delete<any>(`NOTIFICATIONS_API_URL/${id}`);
+  deleteNotification(id:number): Observable<Notification> {
+    return this._http.delete<Notification>(`${NOTIFICATIONS_API_URL}/${id}`);
   }
 }

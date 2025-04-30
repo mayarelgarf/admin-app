@@ -1,0 +1,44 @@
+<section class="notification-form-container">
+  <h1>New Notification</h1>
+  <form
+    [formGroup]="notificationForm"
+    (ngSubmit)="onSubmit()"
+    class="notification-form"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Icon</mat-label>
+      <input matInput formControlName="icon" placeholder="Enter Icon" />
+      <mat-error *ngIf="notificationForm.get('icon')?.hasError('required')">
+        Icon is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Message</mat-label>
+      <input matInput formControlName="message" placeholder="Enter message" />
+      <mat-error *ngIf="notificationForm.get('message')?.hasError('required')">
+        Message is required.
+      </mat-error>
+      <mat-error *ngIf="notificationForm.get('message')?.hasError('maxlength')">
+        Message cannot be more than 255 characters.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Metadata</mat-label>
+      <input matInput formControlName="metadata" placeholder="Enter metadata" />
+      <mat-error *ngIf="notificationForm.get('metadata')?.hasError('required')">
+        Metadata is required.
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="notificationForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
+</section>
