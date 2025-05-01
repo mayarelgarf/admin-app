@@ -22,10 +22,11 @@
     {
       "id": "3",
       "icon": "warning",
-      "message": "Scheduled maintenance on May 1st, 2 AM - 4 AM.",
+      "message": "Scheduled maintenance on May 1st, 2 AM - 4 AM. updated",
       "metadata": "System Alert",
       "color": "#ff9800",
-      "createdAt": "2025-04-26T16:30:00.000Z"
+      "createdAt": "2025-04-26T16:30:00.000Z",
+      "updatedAt": "Thu May 01 2025 10:55:09 GMT+0300 (Eastern European Summer Time)"
     },
     {
       "id": "4",

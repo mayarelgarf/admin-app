@@ -2,3 +2,18 @@
   display: flex;
   flex-direction: column;
 }
+.wrapper{
+  display: flex;
+  gap:2rem
+}
+:host {
+  .mark {
+    mat-icon {
+      position: absolute;
+      bottom: -3px;
+    }
+    span {
+      margin-left: 28px;
+    }
+  }
+}

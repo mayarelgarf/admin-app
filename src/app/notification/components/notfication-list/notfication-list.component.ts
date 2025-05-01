@@ -4,6 +4,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Notification } from '../../interfaces/notification.interface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
+import { NotificationPaths } from '../../enums/NotificationPaths.enum';
+import { MainAppPaths } from '../../../enums/MainAppPaths.enum';
 
 @Component({
   selector: 'app-notfication-list',
@@ -13,6 +16,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class NotficationListComponent implements OnInit {
   displayedColumns: string[] = [
+    'icon',
     'message',
     'metadata',
     'createdAt',
@@ -25,7 +29,8 @@ export class NotficationListComponent implements OnInit {
 
   constructor(
     private _notificationService: NotificationHttpService,
-    private _destroyRef: DestroyRef
+    private _destroyRef: DestroyRef,
+    private _router: Router
   ) {}
   ngOnInit(): void {
     this.getNotificationsList();
@@ -82,5 +87,13 @@ export class NotficationListComponent implements OnInit {
           console.error(err);
         },
       });
+  }
+  /**
+   * @description method to navigate to edit page
+   * @param {number} id
+   * @returns void
+   */
+  editNotification(id: number): void {
+this._router.navigate([`${MainAppPaths.NOTIFICATION}/${NotificationPaths.EDIT}/${id}`])
   }
 }

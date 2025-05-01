@@ -13,7 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { NotificationFormComponent } from './components/notification-form/notification-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [NotficationListComponent, NotificationFormComponent],
   imports: [
@@ -26,6 +27,8 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     MatInputModule,
     MatListModule,
+    MatCardModule,
+    MatSelectModule,
     CommonModule,
     NotificationRoutingModule,
   ],
