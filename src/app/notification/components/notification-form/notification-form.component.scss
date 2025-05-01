@@ -1,25 +1,13 @@
-.notification-form{
+.notification-form {
   display: flex;
   flex-direction: column;
-  flex:1;
+  flex: 1;
 }
-.notification-preview{
-  flex:1
+.notification-preview {
+  flex: 1;
 }
-.wrapper{
+.wrapper {
   display: flex;
-  gap:2rem;
+  gap: 2rem;
   flex-wrap: wrap;
-}
-
-:host {
-  .mark {
-    mat-icon {
-      position: absolute;
-      bottom: -3px;
-    }
-    span {
-      margin-left: 28px;
-    }
-  }
 }

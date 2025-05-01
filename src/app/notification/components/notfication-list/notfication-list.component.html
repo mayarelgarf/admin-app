@@ -1,7 +1,7 @@
 <section>
   <div class="notification-list-title-container">
     <h1>Notifications List</h1>
-    <button mat-raised-button [routerLink]="['/notification', 'new']" class="btn-dark">
+    <button mat-raised-button [routerLink]="['/notification', 'new']">
       Create Notification
     </button>
   </div>
@@ -119,7 +119,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
-    <mat-paginator [pageSizeOptions]="[10, 20, 30]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 20, 30]"[length]="dataSource.data.length"></mat-paginator>
   </div>
 
   <mat-menu #menu="matMenu">

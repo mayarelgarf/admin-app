@@ -34,7 +34,6 @@ export class NotficationListComponent implements OnInit {
   ];
   dataSource!: MatTableDataSource<Notification>;
   selectedNotification!: Notification;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private _notificationService: NotificationHttpService,
@@ -55,11 +54,11 @@ export class NotficationListComponent implements OnInit {
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe({
         next: (notificationData: Notification[]) => {
-          console.log(notificationData);
+
           this.dataSource = new MatTableDataSource<Notification>(
             notificationData
           );
-          this.paginator.length = notificationData.length;
+
         },
         error: (err: Error) => {
           console.error(err);

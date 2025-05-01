@@ -18,11 +18,11 @@
             <mat-icon>{{ icon }}</mat-icon>
             <span>{{ icon }}</span>
           </mat-select-trigger>
-          @for (icon of icons; track icon) {
+          @for (icon of icons; track icon.iconName) {
 
-          <mat-option [value]="icon">
-            <mat-icon>{{ icon }}</mat-icon>
-            <span>{{ icon }}</span>
+          <mat-option [value]="icon.iconName">
+            <mat-icon>{{ icon.iconName }}</mat-icon>
+            <span>{{ icon.label }}</span>
           </mat-option>
 
           }
