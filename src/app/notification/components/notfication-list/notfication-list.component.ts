@@ -1,4 +1,10 @@
-import { Component, DestroyRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { NotificationHttpService } from '../../services/notification-http.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Notification } from '../../interfaces/notification.interface';
@@ -7,6 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { NotificationPaths } from '../../enums/NotificationPaths.enum';
 import { MainAppPaths } from '../../../enums/MainAppPaths.enum';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-notfication-list',
@@ -15,6 +22,7 @@ import { MainAppPaths } from '../../../enums/MainAppPaths.enum';
   styleUrl: './notfication-list.component.scss',
 })
 export class NotficationListComponent implements OnInit {
+  private _snackBar = inject(MatSnackBar);
   displayedColumns: string[] = [
     'icon',
     'message',
@@ -81,7 +89,10 @@ export class NotficationListComponent implements OnInit {
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe({
         next: (notificationData: Notification) => {
-          console.log(notificationData);
+          this._snackBar.open('Notification Deleted Successfully!', '', {
+            duration: 3000,
+          });
+          this.getNotificationsList()
         },
         error: (err: Error) => {
           console.error(err);
@@ -94,6 +105,8 @@ export class NotficationListComponent implements OnInit {
    * @returns void
    */
   editNotification(id: number): void {
-this._router.navigate([`${MainAppPaths.NOTIFICATION}/${NotificationPaths.EDIT}/${id}`])
+    this._router.navigate([
+      `${MainAppPaths.NOTIFICATION}/${NotificationPaths.EDIT}/${id}`,
+    ]);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationHttpService } from '../../services/notification-http.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -8,6 +8,7 @@ import {
   UpdateNotificationRequest,
 } from '../../interfaces/notification.interface';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-notification-form',
@@ -27,6 +28,8 @@ export class NotificationFormComponent implements OnInit {
     'mail',
     'settings',
   ];
+  private _snackBar = inject(MatSnackBar);
+
   get isEditMode(): boolean {
     this.notificationId = this._activatedRoute.snapshot.params['id'];
     return this.notificationId ? true : false;
@@ -66,9 +69,7 @@ export class NotificationFormComponent implements OnInit {
         next: (notificationData: Notification) => {
           this.populateForm(notificationData);
         },
-        error: (err: Error) => {
-          console.error(err);
-        },
+        error: (err: Error) => {},
       });
   }
   /**
@@ -77,6 +78,8 @@ export class NotificationFormComponent implements OnInit {
    * @returns void
    */
   populateForm(notificationData: Notification): void {
+    this.icon = notificationData.icon
+
     this.notificationForm.setValue({
       icon: notificationData.icon,
       message: notificationData.message,
@@ -113,11 +116,11 @@ export class NotificationFormComponent implements OnInit {
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe({
         next: (notificationData: Notification) => {
-          console.log('created', notificationData);
+          this._snackBar.open('Notification Created Successfully!', '', {
+            duration: 3000,
+          });
         },
-        error: (err: Error) => {
-          console.error(err);
-        },
+        error: (err: Error) => {},
       });
   }
 
@@ -134,11 +137,11 @@ export class NotificationFormComponent implements OnInit {
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe({
         next: (notificationData: Notification) => {
-          console.log('updated', notificationData);
+          this._snackBar.open('Notification Updated Successfully!', '', {
+            duration: 3000,
+          });
         },
-        error: (err: Error) => {
-          console.error(err);
-        },
+        error: (err: Error) => {},
       });
   }
 }

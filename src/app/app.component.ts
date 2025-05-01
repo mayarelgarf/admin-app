@@ -1,5 +1,5 @@
-import { Component, DestroyRef, ViewChild } from '@angular/core';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, DestroyRef, inject, signal, ViewChild } from '@angular/core';
+import { BreakpointObserver, MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
@@ -21,35 +21,22 @@ navLinks:NavLink[]=[
   {title:'person',link:'',icon:'person'},
   {title:'Notifications',link:`${MainAppPaths.NOTIFICATION}`,icon:'notifications'},
 ]
-  constructor(
-    private _observer: BreakpointObserver,
-    private _router: Router,
-    private _destroyRef: DestroyRef
-  ) {}
 
-  ngAfterViewInit() {
-    this._observer
-      .observe(['(max-width: 800px)'])
-      .pipe(takeUntilDestroyed(this._destroyRef))
-      .subscribe((res) => {
-        if (res?.matches) {
-          this.sidenav.mode = 'over';
-          this.sidenav.close();
-        } else {
-          this.sidenav.mode = 'side';
-          this.sidenav.open();
-        }
-      });
+protected readonly isMobile = signal(true);
 
-    this._router.events
-      .pipe(
-        takeUntilDestroyed(this._destroyRef),
-        filter((e) => e instanceof NavigationEnd)
-      )
-      .subscribe(() => {
-        if (this.sidenav.mode === 'over') {
-          this.sidenav.close();
-        }
-      });
-  }
+private readonly _mobileQuery: MediaQueryList;
+private readonly _mobileQueryListener: () => void;
+
+constructor() {
+  const media = inject(MediaMatcher);
+
+  this._mobileQuery = media.matchMedia('(max-width: 600px)');
+  this.isMobile.set(this._mobileQuery.matches);
+  this._mobileQueryListener = () => this.isMobile.set(this._mobileQuery.matches);
+  this._mobileQuery.addEventListener('change', this._mobileQueryListener);
+}
+
+ngOnDestroy(): void {
+  this._mobileQuery.removeEventListener('change', this._mobileQueryListener);
+}
 }

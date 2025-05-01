@@ -1,25 +1,24 @@
-<mat-toolbar class="mat-elevation-z8">
-  @if(sidenav.mode === 'over'){
-  <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
-    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
-  </button>
-  } Admin App
-</mat-toolbar>
+<div class="example-container" [class.example-is-mobile]="isMobile()">
+  <mat-toolbar class="example-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Responsive App</h1>
+  </mat-toolbar>
 
-<mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+<mat-sidenav-container  [style.marginTop.px]="isMobile() ? 56 : 0" >
+  <mat-sidenav #sidenav="matSidenav" [mode]="isMobile() ? 'over' : 'side'"
+  [fixedInViewport]="isMobile()" fixedTopGap="56" class="mat-elevation-z8">
     <h4 class="name">Mayar</h4>
     <p class="designation">Software Engineer</p>
 
     <mat-divider></mat-divider>
+    <mat-nav-list>
     @for(navLink of navLinks;track navLink.title){
     <button mat-button class="menu-button" [routerLink]="navLink.link">
       <mat-icon>{{ navLink?.icon }}</mat-icon>
       <span>{{ navLink.title }}</span>
     </button>
     }
-
+    </mat-nav-list>
     <mat-divider></mat-divider>
 
     <button mat-button class="menu-button" routerLink="/help">

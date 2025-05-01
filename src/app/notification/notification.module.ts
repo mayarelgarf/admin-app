@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [NotficationListComponent, NotificationFormComponent],
   imports: [
@@ -29,6 +30,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatListModule,
     MatCardModule,
     MatSelectModule,
+    MatSnackBarModule,
     CommonModule,
     NotificationRoutingModule,
   ],

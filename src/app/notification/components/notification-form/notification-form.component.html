@@ -18,11 +18,11 @@
             <mat-icon>{{ icon }}</mat-icon>
             <span>{{ icon }}</span>
           </mat-select-trigger>
-          @for (icona of icons; track icona) {
+          @for (icon of icons; track icon) {
 
-          <mat-option [value]="icona">
-            <mat-icon>{{ icona }}</mat-icon>
-            <span>{{ icona }}</span>
+          <mat-option [value]="icon">
+            <mat-icon>{{ icon }}</mat-icon>
+            <span>{{ icon }}</span>
           </mat-option>
 
           }
@@ -71,7 +71,7 @@
       </button>
     </form>
     <!-- notification preview  -->
-    <div>
+    <div class="notification-preview">
       <h2>preview</h2>
       <mat-card appearance="outlined">
         <mat-card-header>
