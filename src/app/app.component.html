@@ -1,9 +1,9 @@
-<div class="example-container" [class.example-is-mobile]="isMobile()">
-  <mat-toolbar class="example-toolbar">
+<div class="app-container" [class.example-is-mobile]="isMobile()">
+  <mat-toolbar class="app-container_toolbar">
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="example-app-name">Admin App</h1>
+    <h1 class="app-name">Admin App</h1>
   </mat-toolbar>
 
   <mat-sidenav-container [style.marginTop.px]="isMobile() ? 56 : 0">
@@ -14,8 +14,8 @@
       fixedTopGap="56"
       class="mat-elevation-z8"
     >
-      <h4 >Mayar</h4>
-      <p >Software Engineer</p>
+      <span>Mayar</span>
+      <p>Software Engineer</p>
 
       <mat-divider></mat-divider>
       <mat-nav-list>
