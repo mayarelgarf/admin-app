@@ -1,4 +1,10 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+  Sanitizer,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationHttpService } from '../../services/notification-http.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -7,8 +13,9 @@ import {
   Notification,
   UpdateNotificationRequest,
 } from '../../interfaces/notification.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-notification-form',
@@ -38,11 +45,22 @@ export class NotificationFormComponent implements OnInit {
   get title(): string {
     return this.isEditMode ? 'Edit Notification' : 'New Notification';
   }
+  get linkUrl(): SafeResourceUrl {
+    let link = this.notificationForm.get('link')?.value;
+    if (link) {
+      const safeUrl = this._santizier.bypassSecurityTrustResourceUrl(link);
+      return safeUrl;
+    } else {
+      return '';
+    }
+  }
   constructor(
     private _fb: FormBuilder,
     private _notificationService: NotificationHttpService,
     private _destroyRef: DestroyRef,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _santizier: DomSanitizer,
+    private _router: Router
   ) {}
   ngOnInit(): void {
     this.initForm();
@@ -57,6 +75,7 @@ export class NotificationFormComponent implements OnInit {
       icon: ['', Validators.required],
       message: ['', [Validators.required, Validators.maxLength(255)]],
       metadata: ['', Validators.required],
+      link: [''],
     });
   }
 
@@ -78,14 +97,16 @@ export class NotificationFormComponent implements OnInit {
    * @returns void
    */
   populateForm(notificationData: Notification): void {
-    this.icon = notificationData.icon
+    this.icon = notificationData.icon;
 
     this.notificationForm.setValue({
       icon: notificationData.icon,
       message: notificationData.message,
       metadata: notificationData.metadata,
+      link:notificationData?.link
     });
   }
+
   /**
    * @description method to submit form
    * @returns void
@@ -104,11 +125,12 @@ export class NotificationFormComponent implements OnInit {
    * @returns void
    */
   createNotification(): void {
-    const { icon, message, metadata } = this.notificationForm.value;
+    const { icon, message, metadata ,link} = this.notificationForm.value;
     const request: CreateNotificationRequest = {
       icon: icon,
       message: message,
       metadata: metadata,
+      link:link,
       createdAt: new Date().toString(),
     };
     this._notificationService
@@ -125,11 +147,12 @@ export class NotificationFormComponent implements OnInit {
   }
 
   editNotifictaion(): void {
-    const { icon, message, metadata } = this.notificationForm.value;
+    const { icon, message, metadata,link } = this.notificationForm.value;
     const request: UpdateNotificationRequest = {
       icon: icon,
       message: message,
       metadata: metadata,
+      link:link,
       updatedAt: new Date().toString(),
     };
     this._notificationService

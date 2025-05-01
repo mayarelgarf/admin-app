@@ -2,6 +2,9 @@ mat-toolbar {
   background: #3f4d67;
 
   color: white;
+  button {
+    color: #a9b7d0;
+  }
 }
 
 mat-sidenav {
@@ -25,10 +28,7 @@ mat-sidenav {
 
   font-size: 2rem;
 }
-h1,
-h2 {
-  color: rgba(37, 43, 54, 0.95);
-}
+
 mat-sidenav-container {
   height: calc(100vh - 65px);
 }

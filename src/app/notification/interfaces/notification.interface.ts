@@ -12,6 +12,7 @@ export interface NotificationRequest {
   icon: string;
   message: string;
   metadata: string;
+  link:string
 }
 export interface CreateNotificationRequest extends NotificationRequest {
   createdAt: string;

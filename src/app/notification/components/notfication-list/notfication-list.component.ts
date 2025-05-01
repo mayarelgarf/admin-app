@@ -27,6 +27,7 @@ export class NotficationListComponent implements OnInit {
     'icon',
     'message',
     'metadata',
+    'link',
     'createdAt',
     'updatedAt',
     'star',
