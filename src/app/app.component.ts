@@ -1,5 +1,6 @@
 import {
   Component,
+  DestroyRef,
   inject,
   signal,
   ViewChild,
@@ -9,6 +10,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { NavLink } from './interfaces/nav.interface';
 import { MainAppPaths } from './enums/MainAppPaths.enum';
 import { Subscription } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-root',
@@ -30,20 +32,23 @@ export class AppComponent {
   ];
 
   protected readonly isMobile = signal(true);
+  private _destroyRef = inject(DestroyRef);
 
-
-  private breakpointSub: Subscription;
-  private breakpointObserver = inject(BreakpointObserver);
+  private _breakpointObserver = inject(BreakpointObserver);
 
   constructor() {
-    this.breakpointSub = this.breakpointObserver
+    this.handleSideNavChanges();
+  }
+  /**
+   * @description method to set is Mobile to true accroding to breakpoint
+   * @returns void
+   */
+  handleSideNavChanges(): void {
+    this._breakpointObserver
       .observe(['(max-width: 600px)'])
-      .subscribe(result => {
+      .pipe(takeUntilDestroyed(this._destroyRef))
+      .subscribe((result) => {
         this.isMobile.set(result.matches);
       });
-  }
-
-  ngOnDestroy(): void {
-    this.breakpointSub.unsubscribe();
   }
 }
