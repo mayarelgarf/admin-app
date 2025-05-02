@@ -16,6 +16,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ColorPickerModule } from 'ngx-color-picker';
+
 @NgModule({
   declarations: [NotficationListComponent, NotificationFormComponent],
   imports: [
@@ -33,6 +35,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSnackBarModule,
     CommonModule,
     NotificationRoutingModule,
+    ColorPickerModule
+
   ],
 })
 export class NotificationModule {}

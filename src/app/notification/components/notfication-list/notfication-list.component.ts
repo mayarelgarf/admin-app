@@ -1,4 +1,10 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { NotificationHttpService } from '../../services/notification-http.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Notification } from '../../interfaces/notification.interface';
@@ -7,6 +13,7 @@ import { Router } from '@angular/router';
 import { NotificationPaths } from '../../enums/NotificationPaths.enum';
 import { MainAppPaths } from '../../../enums/MainAppPaths.enum';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-notfication-list',
@@ -28,6 +35,8 @@ export class NotficationListComponent implements OnInit {
   dataSource!: MatTableDataSource<Notification>;
   selectedNotification!: Notification;
 
+  @ViewChild('paginator') paginator!: MatPaginator;
+
   constructor(
     private _notificationService: NotificationHttpService,
     private _destroyRef: DestroyRef,
@@ -37,7 +46,9 @@ export class NotficationListComponent implements OnInit {
   ngOnInit(): void {
     this.getNotificationsList();
   }
-
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
   /**
    * @description method to get notification list
    * @returns void
@@ -51,6 +62,7 @@ export class NotficationListComponent implements OnInit {
           this.dataSource = new MatTableDataSource<Notification>(
             notificationData
           );
+          this.dataSource.paginator = this.paginator;
         },
         error: (err: Error) => {
           console.error(err);

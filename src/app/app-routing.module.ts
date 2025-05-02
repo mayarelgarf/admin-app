@@ -7,6 +7,11 @@ import {
 } from './shared/components';
 
 const routes: Routes = [
+    {
+      path: '',
+      redirectTo: MainAppPaths.NOTIFICATION, //since its the only functional module till now
+      pathMatch: 'full',
+    },
   {
     path: MainAppPaths.HOME,
     component: UnderConstructionComponent,

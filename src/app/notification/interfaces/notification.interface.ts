@@ -13,6 +13,7 @@ export interface NotificationRequest {
   message: string;
   metadata: string;
   link:string
+  color?:string
 }
 export interface CreateNotificationRequest extends NotificationRequest {
   createdAt: string;

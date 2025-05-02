@@ -76,6 +76,10 @@
           placeholder="Enter link (optional)"
         />
       </mat-form-field>
+      <div>
+        <mat-label>color</mat-label>
+        <input [(colorPicker)]="selectedColor" [style.background]="selectedColor"class="color-picker-input"/>
+      </div>
 
       <button
         mat-raised-button
@@ -89,7 +93,7 @@
     <!-- notification preview  -->
     <div class="notification-preview">
       <h2>preview</h2>
-      <mat-card appearance="outlined">
+      <mat-card appearance="outlined" [style.background-color]="selectedColor">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image">
             <mat-icon>{{ icon }}</mat-icon>

@@ -24,7 +24,7 @@ export class NotificationFormComponent implements OnInit {
   notificationForm!: FormGroup;
   notificationId!: number;
   icon: string = '';
-
+  selectedColor!:string
   private _snackBar = inject(MatSnackBar);
 
   get isEditMode(): boolean {
@@ -69,6 +69,8 @@ export class NotificationFormComponent implements OnInit {
       message: ['', [Validators.required, Validators.maxLength(255)]],
       metadata: ['', Validators.required],
       link: [''],
+
+
     });
   }
 
@@ -91,7 +93,7 @@ export class NotificationFormComponent implements OnInit {
    */
   populateForm(notificationData: Notification): void {
     this.icon = notificationData.icon;
-
+this.selectedColor = notificationData?.color||''
     this.notificationForm.setValue({
       icon: notificationData.icon,
       message: notificationData.message,
@@ -125,6 +127,7 @@ export class NotificationFormComponent implements OnInit {
       metadata: metadata,
       link: link,
       createdAt: new Date().toString(),
+      color:this.selectedColor
     };
     this._notificationService
       .addNotification(request)
@@ -151,6 +154,7 @@ export class NotificationFormComponent implements OnInit {
       metadata: metadata,
       link: link,
       updatedAt: new Date().toString(),
+      color:this.selectedColor
     };
     this._notificationService
       .updateNotification(request, this.notificationId)
