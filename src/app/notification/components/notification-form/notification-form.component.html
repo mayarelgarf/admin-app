@@ -76,9 +76,13 @@
           placeholder="Enter link (optional)"
         />
       </mat-form-field>
-      <div>
+      <div class="color-container">
         <mat-label>color</mat-label>
-        <input [(colorPicker)]="selectedColor" [style.background]="selectedColor"class="color-picker-input"/>
+        <input
+          [(colorPicker)]="selectedColor"
+          [style.background]="selectedColor"
+          class="color-picker-input"
+        />
       </div>
 
       <button
