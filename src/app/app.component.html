@@ -18,7 +18,7 @@
       <p>Software Engineer</p>
 
       <mat-divider></mat-divider>
-      <mat-nav-list>
+      <mat-nav-list class="nav-links-list">
         @for(navLink of navLinks;track navLink.title){
         <button mat-button class="menu-button" [routerLink]="navLink.link">
           <mat-icon>{{ navLink?.icon }}</mat-icon>

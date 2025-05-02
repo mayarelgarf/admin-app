@@ -1,4 +1,4 @@
-<section>
+<section class="notification-list-wrapper">
   <div class="notification-list-title-container">
     <h1>Notifications List</h1>
     <button mat-raised-button [routerLink]="['/notification', 'new']">
@@ -6,12 +6,12 @@
     </button>
   </div>
 
-  <mat-form-field>
+  <mat-form-field class="filter-field">
     <input matInput (keyup)="applyFilter($event)" placeholder="Filter" />
   </mat-form-field>
 
-  <div class="example-container mat-elevation-z8">
-    <div class="example-table-container">
+  <div class="mat-elevation-z8">
+    <div class="responsive-table">
       <table mat-table [dataSource]="dataSource" matSort>
         <!-- icon Column -->
         <ng-container matColumnDef="icon">
@@ -55,25 +55,21 @@
             {{ element.metadata }}
           </td>
         </ng-container>
-          <!-- link Column -->
-          <ng-container matColumnDef="link">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-              link
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              class="has_label_on_mobile"
-              data-label="Link"
-            >
-              {{ element.link ||'no link provided' }}
-            </td>
-          </ng-container>
+        <!-- link Column -->
+        <ng-container matColumnDef="link">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>link</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="has_label_on_mobile"
+            data-label="Link"
+          >
+            {{ element.link || "no link provided" }}
+          </td>
+        </ng-container>
         <!-- createdAt Column -->
         <ng-container matColumnDef="createdAt">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            Created at
-          </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Created at</th>
           <td
             mat-cell
             *matCellDef="let element"
@@ -85,9 +81,7 @@
         </ng-container>
         <!-- updatedAt Column -->
         <ng-container matColumnDef="updatedAt">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            Last modified
-          </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Last modified</th>
           <td
             mat-cell
             *matCellDef="let element"
@@ -112,14 +106,16 @@
           </td>
         </ng-container>
 
-        <tr
-          mat-header-row
-          *matHeaderRowDef="displayedColumns; sticky: true"
-        ></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
-    <mat-paginator [pageSizeOptions]="[10, 20, 30]"[length]="dataSource.data.length"></mat-paginator>
+
+
+    <mat-paginator
+      [pageSizeOptions]="[10, 20, 30]"
+      [length]="dataSource?.data?.length"
+    ></mat-paginator>
   </div>
 
   <mat-menu #menu="matMenu">
