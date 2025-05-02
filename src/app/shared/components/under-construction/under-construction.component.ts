@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-under-construction',
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './under-construction.component.html',
   styleUrl: './under-construction.component.scss'
 })
