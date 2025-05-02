@@ -5,11 +5,10 @@ import {
   signal,
   ViewChild,
 } from '@angular/core';
-import { BreakpointObserver, MediaMatcher } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { NavLink } from './interfaces/nav.interface';
 import { MainAppPaths } from './enums/MainAppPaths.enum';
-import { Subscription } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -22,11 +21,11 @@ export class AppComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   navLinks: NavLink[] = [
-    { title: 'Home', link: `${MainAppPaths.HOME}`, icon: 'home' },
-    { title: 'person', link: '', icon: 'person' },
+    { title: 'Home', link: MainAppPaths.HOME, icon: 'home' },
+    { title: 'person', link:  MainAppPaths.PROFILE, icon: 'person' },
     {
       title: 'Notifications',
-      link: `${MainAppPaths.NOTIFICATION}`,
+      link: MainAppPaths.NOTIFICATION,
       icon: 'notifications',
     },
   ];

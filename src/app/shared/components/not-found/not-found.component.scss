@@ -1,0 +1,12 @@
+.under-construction-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  .location-icon {
+    font-size: 3.125rem;
+    height: 3.125rem;
+    width: 3.125rem;
+  }
+}

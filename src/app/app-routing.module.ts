@@ -1,20 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotficationListComponent } from './notification/components/notfication-list/notfication-list.component';
 import { MainAppPaths } from './enums/MainAppPaths.enum';
-import { UnderConstructionComponent } from './shared/components/under-construction/under-construction.component';
+import {
+  NotFoundComponent,
+  UnderConstructionComponent,
+} from './shared/components';
 
 const routes: Routes = [
+  {
+    path: MainAppPaths.HOME,
+    component: UnderConstructionComponent,
+  },
+  {
+    path: MainAppPaths.PROFILE,
+    component: UnderConstructionComponent,
+  },
   {
     path: MainAppPaths.NOTIFICATION,
     loadChildren: () =>
       import('./notification/notification.module').then(
         (m) => m.NotificationModule
       ),
-  },{
-    path:"**",
-    component:UnderConstructionComponent
-  }
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
