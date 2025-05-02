@@ -12,6 +12,9 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       switch (error.status) {
         case 500:
           message = 'Internal server error';
+          break;
+        default:
+          message = 'error fetching data, please contact support'
       }
 
       snackbar.open(message, '', { duration: 3000 });
