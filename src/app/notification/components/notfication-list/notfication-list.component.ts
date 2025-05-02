@@ -1,15 +1,8 @@
-import {
-  Component,
-  DestroyRef,
-  inject,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { NotificationHttpService } from '../../services/notification-http.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Notification } from '../../interfaces/notification.interface';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { NotificationPaths } from '../../enums/NotificationPaths.enum';
 import { MainAppPaths } from '../../../enums/MainAppPaths.enum';
@@ -40,6 +33,7 @@ export class NotficationListComponent implements OnInit {
     private _destroyRef: DestroyRef,
     private _router: Router
   ) {}
+
   ngOnInit(): void {
     this.getNotificationsList();
   }
@@ -54,11 +48,9 @@ export class NotficationListComponent implements OnInit {
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe({
         next: (notificationData: Notification[]) => {
-
           this.dataSource = new MatTableDataSource<Notification>(
             notificationData
           );
-
         },
         error: (err: Error) => {
           console.error(err);
@@ -92,7 +84,7 @@ export class NotficationListComponent implements OnInit {
           this._snackBar.open('Notification Deleted Successfully!', '', {
             duration: 3000,
           });
-          this.getNotificationsList()
+          this.getNotificationsList();
         },
         error: (err: Error) => {
           console.error(err);
