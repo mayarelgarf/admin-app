@@ -7,8 +7,8 @@
       "metadata": "New Message",
       "link": "/messages/123",
       "color": "#4caf50",
-      "createdAt": "2025-04-28T10:45:00.000Z",
-      "updatedAt": "2025-04-28T11:00:00.000Z"
+      "createdAt": "2025-05-03T08:00:00.000Z",
+      "updatedAt": "Sat May 03 2025 22:28:43 GMT+0300 (Eastern European Summer Time)"
     },
     {
       "id": "2",
@@ -17,7 +17,7 @@
       "metadata": "Course Reminder",
       "link": "/courses/angular-basics",
       "color": "#2196f3",
-      "createdAt": "2025-04-27T08:15:00.000Z"
+      "createdAt": "2025-05-03T09:00:00.000Z"
     },
     {
       "id": "3",
@@ -25,8 +25,7 @@
       "message": "Scheduled maintenance on May 1st, 2 AM - 4 AM. updated",
       "metadata": "System Alert",
       "color": "#ff9800",
-      "createdAt": "2025-04-26T16:30:00.000Z",
-      "updatedAt": "Thu May 01 2025 10:55:09 GMT+0300 (Eastern European Summer Time)"
+      "createdAt": "2025-05-03T10:30:00.000Z"
     },
     {
       "id": "4",
@@ -35,8 +34,7 @@
       "metadata": "Course Completed",
       "link": "/certificates/js-advanced",
       "color": "#009688",
-      "createdAt": "2025-04-25T14:00:00.000Z",
-      "updatedAt": "2025-04-25T14:30:00.000Z"
+      "createdAt": "2025-05-03T12:00:00.000Z"
     },
     {
       "id": "ff1c",
@@ -44,7 +42,7 @@
       "message": "New Course Just Dropped!",
       "metadata": "purchase and get 20%off now ",
       "link": "",
-      "createdAt": "Thu May 01 2025 17:36:33 GMT+0300 (Eastern European Summer Time)"
+      "createdAt": "2025-05-03T13:30:00.000Z"
     },
     {
       "id": "3bd7",
@@ -52,15 +50,7 @@
       "message": "Test Message",
       "metadata": "dddd",
       "link": "",
-      "createdAt": "Thu May 01 2025 19:05:40 GMT+0300 (Eastern European Summer Time)"
-    },
-    {
-      "id": "1673",
-      "icon": "book",
-      "message": "djjdjdjd",
-      "metadata": "nn",
-      "link": "",
-      "createdAt": "Thu May 01 2025 19:25:00 GMT+0300 (Eastern European Summer Time)"
+      "createdAt": "2025-05-03T14:45:00.000Z"
     }
   ]
 }

@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 import { NotificationPaths } from '../../enums/NotificationPaths.enum';
 import { MainAppPaths } from '../../../enums/MainAppPaths.enum';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-notfication-list',
@@ -32,12 +31,9 @@ export class NotficationListComponent implements OnInit {
     'updatedAt',
     'star',
   ];
-  dataSource: MatTableDataSource<Notification>= new MatTableDataSource<Notification>();
-  selectedNotification!: Notification;
 
-  @ViewChild('paginator') set paginator(pager: MatPaginator) {
-    if (pager) this.dataSource.paginator = pager;
-  }
+  dataSource!: MatTableDataSource<Notification>;
+  selectedNotification!: Notification;
 
   constructor(
     private _notificationService: NotificationHttpService,
@@ -76,10 +72,6 @@ export class NotficationListComponent implements OnInit {
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
   /**
    * @description method to delete notification

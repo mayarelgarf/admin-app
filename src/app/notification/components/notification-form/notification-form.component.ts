@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { IconsService } from '../../../shared/services/icons.service';
 import { AppIcon } from '../../../shared/interfaces/icons.interface';
+import { MainAppPaths } from '../../../enums/MainAppPaths.enum';
 
 @Component({
   selector: 'app-notification-form',
@@ -132,8 +133,11 @@ export class NotificationFormComponent implements OnInit {
       .subscribe({
         next: (notificationData: Notification) => {
           this._snackBar.open('Notification Created Successfully!', '', {
-            duration: 3000,
-          });
+            duration: 1000,
+          }).afterDismissed().pipe(takeUntilDestroyed(this._destroyRef)).subscribe((info)=>{
+            this._router.navigate([MainAppPaths.NOTIFICATION])
+          })
+
         },
         error: (err: Error) => {},
       });
@@ -158,8 +162,10 @@ export class NotificationFormComponent implements OnInit {
       .subscribe({
         next: (notificationData: Notification) => {
           this._snackBar.open('Notification Updated Successfully!', '', {
-            duration: 3000,
-          });
+            duration: 1000,
+          }).afterDismissed().pipe(takeUntilDestroyed(this._destroyRef)).subscribe((info)=>{
+            this._router.navigate([MainAppPaths.NOTIFICATION])
+          })
         },
         error: (err: Error) => {},
       });

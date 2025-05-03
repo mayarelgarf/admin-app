@@ -5,7 +5,7 @@ import { NotificationRoutingModule } from './notification-routing.module';
 import { NotficationListComponent } from './components/notfication-list/notfication-list.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatPaginatorModule } from '@angular/material/paginator';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -25,7 +25,6 @@ import { ColorPickerModule } from 'ngx-color-picker';
     MatTableModule,
     MatIconModule,
     MatFormFieldModule,
-    MatPaginatorModule,
     MatMenuModule,
     MatButtonModule,
     MatInputModule,

@@ -5,7 +5,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideRouter } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,7 +23,7 @@ import { NotificationRoutingModule } from '../../notification-routing.module';
 describe('NotficationListComponent', () => {
   let component: NotficationListComponent;
   let fixture: ComponentFixture<NotficationListComponent>;
-
+  let paginator: MatPaginator
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NotficationListComponent],
@@ -60,4 +60,17 @@ describe('NotficationListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have displayed columns of notification data', () => {
+    expect(component.displayedColumns).toEqual([
+      'icon',
+      'message',
+      'metadata',
+      'link',
+      'createdAt',
+      'updatedAt',
+      'star'
+    ]);
+  });
+
 });
