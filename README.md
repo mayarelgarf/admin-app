@@ -43,13 +43,13 @@
 ## 🚀 Setup Instructions
 
 ### 1. Clone the repository
-
+```bash
 git clone https://github.com/mayarelgarf/admin-app.git
-
+```
 ### 2. go to project directory
-
+```bash
 cd admin-app
-
+```
 ### ▶️ Running the Frontend
 
 ```bash
@@ -61,5 +61,6 @@ ng serve
 ```
 
 ### ▶️ Running the Backend
-
+```bash
 json-server --watch db.json --port 3000
+```
