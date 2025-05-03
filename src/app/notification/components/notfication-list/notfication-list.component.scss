@@ -1,15 +1,16 @@
-.notification-list-title-container{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-
-}
-.notification-list-wrapper{
-display: flex;
-flex-direction: column;
-gap:2rem
-}
-.filter-field{
-  width: 15rem;
+.notification-list {
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  &-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  &-filter {
+    width: 15rem;
+  }
 }

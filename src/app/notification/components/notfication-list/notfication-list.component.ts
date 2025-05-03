@@ -35,7 +35,7 @@ export class NotficationListComponent implements OnInit {
   dataSource!: MatTableDataSource<Notification>;
   selectedNotification!: Notification;
 
-  @ViewChild('paginator') set paginator(pager:MatPaginator) {
+  @ViewChild('paginator') set paginator(pager: MatPaginator) {
     if (pager) this.dataSource.paginator = pager;
   }
 

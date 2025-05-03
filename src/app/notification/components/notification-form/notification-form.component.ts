@@ -12,7 +12,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { IconsService } from '../../../shared/services/icons.service';
 import { AppIcon } from '../../../shared/interfaces/icons.interface';
-import { MainAppPaths } from '../../../enums/MainAppPaths.enum';
 
 @Component({
   selector: 'app-notification-form',
@@ -24,7 +23,7 @@ export class NotificationFormComponent implements OnInit {
   notificationForm!: FormGroup;
   notificationId!: number;
   icon: string = '';
-  selectedColor!:string
+  selectedColor!: string;
   private _snackBar = inject(MatSnackBar);
 
   get isEditMode(): boolean {
@@ -53,7 +52,7 @@ export class NotificationFormComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     private _santizier: DomSanitizer,
     private _iconsService: IconsService,
-    private _router :Router
+    private _router: Router
   ) {}
   ngOnInit(): void {
     this.initForm();
@@ -69,8 +68,6 @@ export class NotificationFormComponent implements OnInit {
       message: ['', [Validators.required, Validators.maxLength(255)]],
       metadata: ['', Validators.required],
       link: [''],
-
-
     });
   }
 
@@ -93,7 +90,7 @@ export class NotificationFormComponent implements OnInit {
    */
   populateForm(notificationData: Notification): void {
     this.icon = notificationData.icon;
-this.selectedColor = notificationData?.color||''
+    this.selectedColor = notificationData?.color || '';
     this.notificationForm.setValue({
       icon: notificationData.icon,
       message: notificationData.message,
@@ -127,7 +124,7 @@ this.selectedColor = notificationData?.color||''
       metadata: metadata,
       link: link,
       createdAt: new Date().toString(),
-      color:this.selectedColor
+      color: this.selectedColor,
     };
     this._notificationService
       .addNotification(request)
@@ -137,12 +134,11 @@ this.selectedColor = notificationData?.color||''
           this._snackBar.open('Notification Created Successfully!', '', {
             duration: 3000,
           });
-
         },
         error: (err: Error) => {},
       });
   }
- /**
+  /**
    * @description method to handle building request and edit existing notification
    * @returns void
    */
@@ -154,7 +150,7 @@ this.selectedColor = notificationData?.color||''
       metadata: metadata,
       link: link,
       updatedAt: new Date().toString(),
-      color:this.selectedColor
+      color: this.selectedColor,
     };
     this._notificationService
       .updateNotification(request, this.notificationId)
