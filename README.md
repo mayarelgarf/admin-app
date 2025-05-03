@@ -24,7 +24,7 @@
 - Angular 19
 - RxJS
 - Angular Material
-  -ngx-color-picker
+- ngx-color-picker
 
 ### 🗄️ Backend
 
