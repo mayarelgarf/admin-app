@@ -4,7 +4,7 @@
     <form
       [formGroup]="notificationForm"
       (ngSubmit)="onSubmit()"
-      class="notification-form"
+      class="form"
     >
       <mat-form-field appearance="fill">
         <mat-label>Icon</mat-label>
@@ -81,7 +81,7 @@
         <input
           [(colorPicker)]="selectedColor"
           [style.background]="selectedColor"
-          class="color-picker-input"
+          class="color-input"
         />
       </div>
 
