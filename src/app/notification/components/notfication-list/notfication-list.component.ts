@@ -35,7 +35,9 @@ export class NotficationListComponent implements OnInit {
   dataSource!: MatTableDataSource<Notification>;
   selectedNotification!: Notification;
 
-  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild('paginator') set paginator(pager:MatPaginator) {
+    if (pager) this.dataSource.paginator = pager;
+  }
 
   constructor(
     private _notificationService: NotificationHttpService,
@@ -46,12 +48,7 @@ export class NotficationListComponent implements OnInit {
   ngOnInit(): void {
     this.getNotificationsList();
   }
-  ngAfterViewInit() {
-    if( this.dataSource ){
-      this.dataSource.paginator = this.paginator;
-    }
 
-  }
   /**
    * @description method to get notification list
    * @returns void
@@ -65,7 +62,6 @@ export class NotficationListComponent implements OnInit {
           this.dataSource = new MatTableDataSource<Notification>(
             notificationData
           );
-          this.dataSource.paginator = this.paginator;
         },
         error: (err: Error) => {
           console.error(err);
