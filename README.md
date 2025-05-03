@@ -9,6 +9,13 @@
 > - Edit existing notifications
 > - Delete notifications
 
+## Architecture/ Approach of the Project
+
+> -Approach used is making an app with every big feature bundled and lazy loaded as a module (for now done only for the notifications ) to easily scale the project without affecting performance.
+>
+> - shared components between different modules are standalone components to be used anywhere across the project
+>   -shared folder is introduced that includes all shared services ,interfaces , components , interceptors and enums
+>   -mimic day to day data handelling by using json server for APIs used in CRUD operations
 
 ## 📦 Dependencies
 
@@ -17,6 +24,7 @@
 - Angular 19
 - RxJS
 - Angular Material
+  -ngx-color-picker
 
 ### 🗄️ Backend
 
@@ -43,6 +51,7 @@ npm install
 # Step 2: Start Angular development server
 ng serve
 ```
-### ▶️ Running the Backend
-json-server --watch db.json --port 3000
 
+### ▶️ Running the Backend
+
+json-server --watch db.json --port 3000
