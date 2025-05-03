@@ -22,7 +22,7 @@ export class AppComponent {
   sidenav!: MatSidenav;
   navLinks: NavLink[] = [
     { title: 'Home', link: MainAppPaths.HOME, icon: 'home' },
-    { title: 'person', link:  MainAppPaths.PROFILE, icon: 'person' },
+    { title: 'Profile', link:  MainAppPaths.PROFILE, icon: 'person' },
     {
       title: 'Notifications',
       link: MainAppPaths.NOTIFICATION,

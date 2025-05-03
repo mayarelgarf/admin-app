@@ -47,7 +47,10 @@ export class NotficationListComponent implements OnInit {
     this.getNotificationsList();
   }
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    if( this.dataSource ){
+      this.dataSource.paginator = this.paginator;
+    }
+
   }
   /**
    * @description method to get notification list
