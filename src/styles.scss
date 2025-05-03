@@ -13,7 +13,7 @@ body {
 :root  {
   @include mat.button-overrides(
     (
-      container-color: $primary-color,
+      protected-container-color: $primary-color,
       protected-label-text-color: $white,
     )
   );
