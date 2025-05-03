@@ -14,8 +14,9 @@
 > - Approach used is making an app with every big feature bundled and lazy loaded as a module (for now done only for the notifications ) to easily scale the project without affecting performance.
 >
 > - shared components between different modules are standalone components to be used anywhere across the project
->  - shared folder is introduced that includes all shared services ,interfaces , components , interceptors and enums
->  - mimic day to day data handelling by using json server for APIs used in CRUD operations
+> - shared folder is introduced that includes all shared services ,interfaces , components , interceptors and enums
+> - mimic day to day data handelling by using json server for APIs used in CRUD operations
+> - Chatgpt used for formatting and rewriting the Readme as well as asking for enhancements(code review :p)
 
 ## 📦 Dependencies
 
@@ -36,20 +37,28 @@
 
 - Node.js (e.g., v18.x)
 - npm or yarn
-- Angular CLI (`npm install -g @angular/cli`)
+- Angular CLI
+
+```bash
+(`npm install -g @angular/cli`)
+```
 
 ---
 
 ## 🚀 Setup Instructions
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/mayarelgarf/admin-app.git
 ```
+
 ### 2. go to project directory
+
 ```bash
 cd admin-app
 ```
+
 ### ▶️ Running the Frontend
 
 ```bash
@@ -61,6 +70,13 @@ ng serve
 ```
 
 ### ▶️ Running the Backend
+
 ```bash
 json-server --watch db.json --port 3000
+```
+
+if json server still not recognized you might need to run
+
+```bash
+npm install -g json-server
 ```
