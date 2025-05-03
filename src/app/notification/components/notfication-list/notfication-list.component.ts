@@ -32,7 +32,7 @@ export class NotficationListComponent implements OnInit {
     'updatedAt',
     'star',
   ];
-  dataSource!: MatTableDataSource<Notification>;
+  dataSource: MatTableDataSource<Notification>= new MatTableDataSource<Notification>();
   selectedNotification!: Notification;
 
   @ViewChild('paginator') set paginator(pager: MatPaginator) {
